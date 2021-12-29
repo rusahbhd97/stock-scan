@@ -1,19 +1,16 @@
 <template>
-  <Stocks
+  <router-view 
     v-if="mainData.length !== 0" 
     v-bind:mainData="mainData"
-  />
+  >
+  </router-view>
 </template>
 
 <script>
-import Stocks from './components/Stocks.vue';
 import axios from 'axios';
 
 export default {
   name: 'App',
-  components: {
-    Stocks
-  },
   data() {
     return {
       mainData: [],
@@ -30,7 +27,7 @@ export default {
       });
     },
     setData(data) {
-      this.mainData = data;
+      this.mainData = JSON.parse(JSON.stringify(data));
     }
   },
 }
