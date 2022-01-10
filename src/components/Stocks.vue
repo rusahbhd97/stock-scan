@@ -3,7 +3,7 @@
     <div class="phone-section">
       <ul>
         <li v-for="(d,i) in stocks" :key="i">
-          <a @click="sendView(d,i+1)">
+          <a @click="sendView(d)">
             <div>{{d.name}}</div>
             <div :class="'subtext '+d.color">{{d.tag}}</div>
           </a>
@@ -21,11 +21,11 @@ export default {
     }
   },
   methods: {
-    sendView(viewData,id) {
+    sendView(viewData) {
       let temp = JSON.stringify(JSON.parse(JSON.stringify(viewData)));
       this.$router.push({
-        name: temp.name,
-        params: { id },
+        name: viewData.name,
+        params: { temp },
       });
     }
   },
